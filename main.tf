@@ -2,12 +2,9 @@ provider "aws" {
   region = "eu-north-1"
 }
 
-# Отримуємо існуючу Security Group за її ім'ям
+# Отримуємо існуючу Security Group за її ID (РЕКОМЕНДОВАНО)
 data "aws_security_group" "allow_http_ssh" {
-  filter {
-    name   = "group-name"
-    values = ["launch-wizard-1"]  # Замініть на реальну групу з `aws ec2 describe-security-groups`
-  }
+  id = "sg-0d09dc9754d8b9dd6" # Замініть на ID вашої Security Group
 }
 
 # Створюємо EC2-інстанс, використовуючи існуючу Security Group
